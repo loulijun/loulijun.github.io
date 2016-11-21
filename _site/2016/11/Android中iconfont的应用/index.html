@@ -6,17 +6,17 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>Sample Post</title>
-  <meta name="description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...">
+  <title>Android中iconfont的应用</title>
+  <meta name="description" content="iconfont是什么">
   <meta name="author" content="Wei Wang">
 
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Sample Post">
-  <meta name="twitter:description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...">
+  <meta name="twitter:title" content="Android中iconfont的应用">
+  <meta name="twitter:description" content="iconfont是什么">
   
   <meta property="og:type" content="article">
-  <meta property="og:title" content="Sample Post">
-  <meta property="og:description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...">
+  <meta property="og:title" content="Android中iconfont的应用">
+  <meta property="og:description" content="iconfont是什么">
   
   <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
   <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
-  <link rel="canonical" href="http://www.loulijun.com/2016/02/sample-post/">
+  <link rel="canonical" href="http://www.loulijun.com/2016/11/Android%E4%B8%ADiconfont%E7%9A%84%E5%BA%94%E7%94%A8/">
   <link rel="alternate" type="application/rss+xml" title="花郎" href="http://www.loulijun.com/feed.xml">
   
   <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
@@ -55,16 +55,14 @@
         <hr class="panel-cover__divider panel-cover__divider--secondary" />
         
         
-        <p class="panel-cover__description"><a href="http:www.loulijun.com" target="_blank">欢迎访问花郎的博客</a></p>
-        
         
         <div class="navigation-wrapper">
           <div>
             <nav class="cover-navigation cover-navigation--primary">
               <ul class="navigation">
-                <li class="navigation__item"><a href="/#blog" title="Visit blog" class="blog-button">Blog</a></li>
+                <li class="navigation__item"><a href="/#blog" title="我的博客" class="blog-button">博客</a></li>
                 
-                  <li class="navigation__item"><a href="http://project.onevcat.com" target="_blank" title="My Projects">Projects</a></li>
+                  <li class="navigation__item"><a href="http://www.loulijun.com" target="_blank" title="我的主页">主页</a></li>
                 
               </ul>
             </nav>
@@ -134,39 +132,99 @@
             <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2016-02-15 14:32:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-02-15</time> &#8226; <span class="post-meta__tags tags"></span>
+      <time datetime="2016-11-21 18:30:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-11-21</time> &#8226; <span class="post-meta__tags tags">技术</span>
     </div>
-    <h1 class="post-title">Sample Post</h1>
+    <h1 class="post-title">Android中iconfont的应用</h1>
   </header>
 
   <section class="post">
-    <p>You’ll find this post in your <code>_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code>jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+    <h3 id="iconfont">iconfont是什么</h3>
 
-<p>To add new posts, simply add a file in the <code>_posts</code> directory that follows the convention <code>YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
+<p>iconfont翻译过来就是矢量字体图标，通过字体文件取代图片来展示图标，特殊字体等元素的方法，并且，该技术使用也比较普遍了，可以应用在web、Android、iOS中，比如<a href="http://www.iconfont.cn">阿里妈妈</a>将iconfont整合并公开了很多字体图标库，可以直接拿来使用，当然如果要自己制作iconfont需要先制作svg图片然后转为字体，或者有相应的网站直接生成均可。由于近期在Android中使用到，所以记录之，以下只总结在Android中应用遇到的问题。
+<img src="http://7xla3m.com1.z0.glb.clouddn.com/20160601-iconfont-banner.png" alt="Image By Dustin Wallace" /></p>
 
-<p>Jekyll also offers powerful support for code snippets:</p>
+<!-- more -->
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby">def print_hi(name)
-  puts &quot;Hi, #{name}&quot;
-end
-print_hi(&#39;Tom&#39;)
-#=&gt; prints &#39;Hi, Tom&#39; to STDOUT.</code></pre></figure>
+<h3 id="iconfont-1">使用iconfont的优缺点</h3>
+<p>优点</p>
 
-<p>Check out the <a href="http://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
+<ul>
+  <li>体积比图片小很多</li>
+  <li>矢量，所以拉伸不会变形；颜色大小可以更换，所以后期更易维护（Android中可能提供很多套不同尺寸的图片，iconfont只需要一套即可）</li>
+  <li>风格统一，使用方便</li>
+  <li>可以添加一些视觉效果如：阴影、旋转、透明度</li>
+</ul>
 
+<p>缺点</p>
+
+<ul>
+  <li>制作iconfont门槛稍高，首先需要提供svg资源，通过工具转换为对应的字库文件</li>
+  <li>只能是纯色，如果图标是颜色很多的就不适合了</li>
+  <li>在Android中部分应用场景受限（如TextView的drawableLeft， ImageView的placeholder等）</li>
+</ul>
+
+<h3 id="android">在Android中使用</h3>
+<p>step1：将字体库iconfont.ttf放到assets目录下（我放到了arrets/iconfont/iconfont.ttf），ttf字体库可以在相应的字体库多选打包</p>
+
+<p>step2：封装IconFontTextView，代码如下</p>
+
+<pre><code>public class IconFontTextView extends TextView {
+    public IconFontTextView(Context context) {
+        super(context);
+        initIconFontTypeFace(context);
+    }
+
+    public IconFontTextView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initIconFontTypeFace(context);
+    }
+
+    private void initIconFontTypeFace(Context context) {
+        Typeface iconfont = null;
+        try {
+            iconfont = Typeface.createFromAsset(context.getAssets(), "iconfont/iconfont.ttf");
+            setTypeface(iconfont);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+</code></pre>
+
+<p>step3：找到需要替换的图标及iconfont对应的图标的unicode，例如替换一个礼包的图标，需要知道我要替换的图标大小（大小可以自己指定，一般都是UE指定），颜色，以及对应的字体的unicode。</p>
+
+<p><img src="http://7xla3m.com1.z0.glb.clouddn.com/20160601-iconfont-demo.png" alt="iconfont demo" /></p>
+
+<p>在strings.xml中将值定义，将对应的图标的unicode填入string.xml中。</p>
+
+<pre><code> &lt;string name="iconfont_gift"&gt;&amp;#xf3d8;&lt;/string&gt;
+</code></pre>
+<p>step4：最后在代码中使用</p>
+
+<pre><code>&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@android:color/white"&gt;
+    &lt;com.loulijun.text.IconFontTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="160sp"
+        android:textColor="#FF0000"
+        android:text="@string/iconfont_gift"/&gt;
+&lt;/LinearLayout&gt;
+</code></pre>
+
+<p>得到的效果如下：</p>
+
+<p><img src="http://7xla3m.com1.z0.glb.clouddn.com/20160601-iconfont-show.png" alt="MacDown Screenshot" /></p>
 
   </section>
 </article>
 
 <section class="read-more">
-   
-   
-   <div class="read-more-item">
-       <span class="read-more-item-dim">最近的文章</span>
-       <h2 class="post-list__post-title post-title"><a href="/2016/02/hello-world-vno/" title="link to Hello World - Vno">Hello World - Vno</a></h2>
-       <p class="excerpt">What’s thisVno Jekyll is a theme for Jekyll. It is a port of my Ghost theme vno, which is originally developed from Dale Anthony’s Uno.Usage$ git clone https://github.com/onevcat/vno-jekyll.git your_site$ cd your_site$ bundler install$ bundler exe...&hellip;</p>
-       <div class="post-list__meta"><time datetime="2016-02-16 14:32:24 +0800" class="post-list__meta--date date">2016-02-16</time> &#8226; <span class="post-list__meta--tags tags"></span><a class="btn-border-small" href=/2016/02/hello-world-vno/>继续阅读</a></div>
-   </div>
    
    
    
@@ -178,11 +236,11 @@ print_hi(&#39;Tom&#39;)
     <script>
     
     var disqus_config = function () {
-        this.page.url = "http://www.loulijun.com/2016/02/sample-post/";
-        this.page.identifier = "/2016/02/sample-post/";
+        this.page.url = "http://www.loulijun.com/2016/11/Android%E4%B8%ADiconfont%E7%9A%84%E5%BA%94%E7%94%A8/";
+        this.page.identifier = "/2016/11/Android%E4%B8%ADiconfont%E7%9A%84%E5%BA%94%E7%94%A8/";
     };
 
-    var disqus_shortname = 'vno-jekyll';
+    var disqus_shortname = '花郎';
     
     (function() { // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script');

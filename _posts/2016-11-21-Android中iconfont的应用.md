@@ -1,8 +1,7 @@
 ---
 layout: post
 title: Android中iconfont的应用
-category:  技术
-tags: Android, iconfont
+tags: 技术
 date: 2016-11-21 19:30:24.000000000 +09:00
 ---
 

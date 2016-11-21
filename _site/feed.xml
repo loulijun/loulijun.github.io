@@ -5,90 +5,100 @@
     <description>其实我是个程序员</description>
     <link>http://www.loulijun.com/</link>
     <atom:link href="http://www.loulijun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 21 Nov 2016 12:35:15 +0800</pubDate>
-    <lastBuildDate>Mon, 21 Nov 2016 12:35:15 +0800</lastBuildDate>
+    <pubDate>Mon, 21 Nov 2016 23:59:44 +0800</pubDate>
+    <lastBuildDate>Mon, 21 Nov 2016 23:59:44 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
-        <title>Hello World - Vno</title>
-        <description>&lt;h4 id=&quot;whats-this&quot;&gt;What’s this&lt;/h4&gt;
+        <title>Android中iconfont的应用</title>
+        <description>&lt;h3 id=&quot;iconfont&quot;&gt;iconfont是什么&lt;/h3&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://github.com/onevcat/vno-jekyll&quot;&gt;Vno Jekyll&lt;/a&gt; is a theme for &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;. It is a port of my Ghost theme &lt;a href=&quot;https://github.com/onevcat/vno&quot;&gt;vno&lt;/a&gt;, which is originally developed from &lt;a href=&quot;https://github.com/daleanthony/uno&quot;&gt;Dale Anthony’s Uno&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;iconfont翻译过来就是矢量字体图标，通过字体文件取代图片来展示图标，特殊字体等元素的方法，并且，该技术使用也比较普遍了，可以应用在web、Android、iOS中，比如&lt;a href=&quot;http://www.iconfont.cn&quot;&gt;阿里妈妈&lt;/a&gt;将iconfont整合并公开了很多字体图标库，可以直接拿来使用，当然如果要自己制作iconfont需要先制作svg图片然后转为字体，或者有相应的网站直接生成均可。由于近期在Android中使用到，所以记录之，以下只总结在Android中应用遇到的问题。
+&lt;img src=&quot;http://7xla3m.com1.z0.glb.clouddn.com/20160601-iconfont-banner.png&quot; alt=&quot;Image By Dustin Wallace&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;usage&quot;&gt;Usage&lt;/h4&gt;
+&lt;!-- more --&gt;
 
-&lt;pre&gt;&lt;code class=&quot;language-bash&quot;&gt;$ git clone https://github.com/onevcat/vno-jekyll.git your_site
-$ cd your_site
-$ bundler install
-$ bundler exec jekyll serve
+&lt;h3 id=&quot;iconfont-1&quot;&gt;使用iconfont的优缺点&lt;/h3&gt;
+&lt;p&gt;优点&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;体积比图片小很多&lt;/li&gt;
+  &lt;li&gt;矢量，所以拉伸不会变形；颜色大小可以更换，所以后期更易维护（Android中可能提供很多套不同尺寸的图片，iconfont只需要一套即可）&lt;/li&gt;
+  &lt;li&gt;风格统一，使用方便&lt;/li&gt;
+  &lt;li&gt;可以添加一些视觉效果如：阴影、旋转、透明度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;缺点&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;制作iconfont门槛稍高，首先需要提供svg资源，通过工具转换为对应的字库文件&lt;/li&gt;
+  &lt;li&gt;只能是纯色，如果图标是颜色很多的就不适合了&lt;/li&gt;
+  &lt;li&gt;在Android中部分应用场景受限（如TextView的drawableLeft， ImageView的placeholder等）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;android&quot;&gt;在Android中使用&lt;/h3&gt;
+&lt;p&gt;step1：将字体库iconfont.ttf放到assets目录下（我放到了arrets/iconfont/iconfont.ttf），ttf字体库可以在相应的字体库多选打包&lt;/p&gt;
+
+&lt;p&gt;step2：封装IconFontTextView，代码如下&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class IconFontTextView extends TextView {
+    public IconFontTextView(Context context) {
+        super(context);
+        initIconFontTypeFace(context);
+    }
+
+    public IconFontTextView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initIconFontTypeFace(context);
+    }
+
+    private void initIconFontTypeFace(Context context) {
+        Typeface iconfont = null;
+        try {
+            iconfont = Typeface.createFromAsset(context.getAssets(), &quot;iconfont/iconfont.ttf&quot;);
+            setTypeface(iconfont);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;Your site with &lt;code&gt;Vno Jekyll&lt;/code&gt; enabled should be accessible in http://127.0.0.1:4000.&lt;/p&gt;
+&lt;p&gt;step3：找到需要替换的图标及iconfont对应的图标的unicode，例如替换一个礼包的图标，需要知道我要替换的图标大小（大小可以自己指定，一般都是UE指定），颜色，以及对应的字体的unicode。&lt;/p&gt;
 
-&lt;p&gt;For more information about Jekyll, please visit &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll’s site&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xla3m.com1.z0.glb.clouddn.com/20160601-iconfont-demo.png&quot; alt=&quot;iconfont demo&quot; /&gt;&lt;/p&gt;
 
-&lt;h4 id=&quot;configuration&quot;&gt;Configuration&lt;/h4&gt;
+&lt;p&gt;在strings.xml中将值定义，将对应的图标的unicode填入string.xml中。&lt;/p&gt;
 
-&lt;p&gt;All configuration could be done in &lt;code&gt;_config.yml&lt;/code&gt;. Remember you need to restart to serve the page when after changing the config file. Everything in the config file should be self-explanatory.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; &amp;lt;string name=&quot;iconfont_gift&quot;&amp;gt;&amp;amp;#xf3d8;&amp;lt;/string&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;step4：最后在代码中使用&lt;/p&gt;
 
-&lt;h4 id=&quot;background-image-and-avatar&quot;&gt;Background image and avatar&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&amp;gt;
+&amp;lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    android:orientation=&quot;vertical&quot; android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:gravity=&quot;center&quot;
+    android:background=&quot;@android:color/white&quot;&amp;gt;
+    &amp;lt;com.loulijun.text.IconFontTextView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:textSize=&quot;160sp&quot;
+        android:textColor=&quot;#FF0000&quot;
+        android:text=&quot;@string/iconfont_gift&quot;/&amp;gt;
+&amp;lt;/LinearLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;You could replace the background and avatar image in &lt;code&gt;assets/images&lt;/code&gt; folder to change them.&lt;/p&gt;
+&lt;p&gt;得到的效果如下：&lt;/p&gt;
 
-&lt;h4 id=&quot;sites-using-vno&quot;&gt;Sites using Vno&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://onevcat.com&quot;&gt;My blog&lt;/a&gt; is using &lt;code&gt;Vno Jekyll&lt;/code&gt; as well, you could see how it works in real. There are some other sites using the same theme. You can find them below:&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Site Name&lt;/th&gt;
-      &lt;th&gt;URL&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;OneV’s Den&lt;/td&gt;
-      &lt;td&gt;http://onevcat.com&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;If you happen to be using this theme, welcome to &lt;a href=&quot;https://github.com/onevcat/vno-jekyll/pulls&quot;&gt;send me a pull request&lt;/a&gt; to add your site link here. :)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;license&quot;&gt;License&lt;/h4&gt;
-
-&lt;p&gt;Great thanks to &lt;a href=&quot;https://github.com/daleanthony&quot;&gt;Dale Anthony&lt;/a&gt; and his &lt;a href=&quot;https://github.com/daleanthony/uno&quot;&gt;Uno&lt;/a&gt;. Vno Jekyll is based on Uno, and contains a lot of modification on page layout, animation, font and some more things I can not remember. Vno Jekyll is followed with Uno and be licensed as &lt;a href=&quot;http://creativecommons.org/licenses/by/4.0/&quot;&gt;Creative Commons Attribution 4.0 International&lt;/a&gt;. See the link for more information.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xla3m.com1.z0.glb.clouddn.com/20160601-iconfont-show.png&quot; alt=&quot;MacDown Screenshot&quot; /&gt;&lt;/p&gt;
 </description>
-        <pubDate>Tue, 16 Feb 2016 14:32:24 +0800</pubDate>
-        <link>http://www.loulijun.com/2016/02/hello-world-vno/</link>
-        <guid isPermaLink="true">http://www.loulijun.com/2016/02/hello-world-vno/</guid>
+        <pubDate>Mon, 21 Nov 2016 18:30:24 +0800</pubDate>
+        <link>http://www.loulijun.com/2016/11/Android%E4%B8%ADiconfont%E7%9A%84%E5%BA%94%E7%94%A8/</link>
+        <guid isPermaLink="true">http://www.loulijun.com/2016/11/Android%E4%B8%ADiconfont%E7%9A%84%E5%BA%94%E7%94%A8/</guid>
         
-        
-      </item>
-    
-      <item>
-        <title>Sample Post</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;def print_hi(name)
-  puts &amp;quot;Hi, #{name}&amp;quot;
-end
-print_hi(&amp;#39;Tom&amp;#39;)
-#=&amp;gt; prints &amp;#39;Hi, Tom&amp;#39; to STDOUT.&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
-
-</description>
-        <pubDate>Mon, 15 Feb 2016 14:32:24 +0800</pubDate>
-        <link>http://www.loulijun.com/2016/02/sample-post/</link>
-        <guid isPermaLink="true">http://www.loulijun.com/2016/02/sample-post/</guid>
+        <category>技术</category>
         
         
       </item>
