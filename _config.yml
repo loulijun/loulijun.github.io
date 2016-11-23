@@ -25,9 +25,9 @@ blog_button:
 
 # Navigation buttons in the front page.
 nav:
-    - {title: 技术, description: 极客精神, url: ''}
-    - {title: 生活, description: 有滋有味, url: ''}
-    - {title: 学习, description: 开阔眼界, url: ''}
+    # - {title: 技术, description: 极客精神, url: ''}
+    # - {title: 生活, description: 有滋有味, url: ''}
+    # - {title: 学习, description: 开阔眼界, url: ''}
     # - {title: Another Button, description: A button, url: 'http://example.com'}
 
 # Pagination
