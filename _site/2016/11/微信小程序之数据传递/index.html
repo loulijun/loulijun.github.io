@@ -157,9 +157,11 @@
 <p>通过在wxml中设置bindtap、catchtap等，在js中写对应的实现方法（不过这种方式目前有个缺点，点击的时候没有点击效果），使用方法如下</p>
 
 <p>以下摘自微信小程序官方教程，在wxml中绑定一个事件</p>
+
 <pre><code>&lt;view id="tapTest" data-hi="WeChat" bindtap="tapName"&gt; Click me! &lt;/view&gt;
 </code></pre>
 <p>然后在对应的js中写出事件的具体实现</p>
+
 <pre><code>Page({
   tapName: function(event) {
     console.log(event)
@@ -179,7 +181,7 @@
 
 <p>一般使用场景中，例如一个列表的item中有多个点击事件需要处理，就可以使用catchtap阻止向上冒泡</p>
 
-<p>###二、参数传递</p>
+<h3 id="section-2">二、参数传递</h3>
 
 <p><strong>参数传递有两种方式</strong></p>
 
@@ -232,6 +234,7 @@
 <p><strong>（3）wxml中配置data-testid传递字符串</strong></p>
 
 <p>这种方式一般是在wxml中绑定事件，同时设置需要传递的数据，如果需要传递多个，可以写多个data-[参数]的方式进行传递</p>
+
 <pre><code>&lt;view bindtap="clickMe" data-testId="&gt;
     ...
 &lt;/view&gt;

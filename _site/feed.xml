@@ -5,8 +5,8 @@
     <description>其实我是个程序员</description>
     <link>http://www.loulijun.com/</link>
     <atom:link href="http://www.loulijun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 25 Nov 2016 16:23:24 +0800</pubDate>
-    <lastBuildDate>Fri, 25 Nov 2016 16:23:24 +0800</lastBuildDate>
+    <pubDate>Fri, 25 Nov 2016 16:26:57 +0800</pubDate>
+    <lastBuildDate>Fri, 25 Nov 2016 16:26:57 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
     
       <item>
@@ -32,9 +32,11 @@
 &lt;p&gt;通过在wxml中设置bindtap、catchtap等，在js中写对应的实现方法（不过这种方式目前有个缺点，点击的时候没有点击效果），使用方法如下&lt;/p&gt;
 
 &lt;p&gt;以下摘自微信小程序官方教程，在wxml中绑定一个事件&lt;/p&gt;
+
 &lt;pre&gt;&lt;code&gt;&amp;lt;view id=&quot;tapTest&quot; data-hi=&quot;WeChat&quot; bindtap=&quot;tapName&quot;&amp;gt; Click me! &amp;lt;/view&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;然后在对应的js中写出事件的具体实现&lt;/p&gt;
+
 &lt;pre&gt;&lt;code&gt;Page({
   tapName: function(event) {
     console.log(event)
@@ -54,7 +56,7 @@
 
 &lt;p&gt;一般使用场景中，例如一个列表的item中有多个点击事件需要处理，就可以使用catchtap阻止向上冒泡&lt;/p&gt;
 
-&lt;p&gt;###二、参数传递&lt;/p&gt;
+&lt;h3 id=&quot;section-2&quot;&gt;二、参数传递&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;参数传递有两种方式&lt;/strong&gt;&lt;/p&gt;
 
@@ -107,6 +109,7 @@
 &lt;p&gt;&lt;strong&gt;（3）wxml中配置data-testid传递字符串&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;这种方式一般是在wxml中绑定事件，同时设置需要传递的数据，如果需要传递多个，可以写多个data-[参数]的方式进行传递&lt;/p&gt;
+
 &lt;pre&gt;&lt;code&gt;&amp;lt;view bindtap=&quot;clickMe&quot; data-testId=&quot;&amp;gt;
     ...
 &amp;lt;/view&amp;gt;
