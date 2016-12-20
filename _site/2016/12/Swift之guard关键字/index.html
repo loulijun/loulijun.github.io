@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>swift之guard关键字</title>
+  <meta name="description" content="前言看了很多关于guard关键字的文章，但是还是不能够很好的理解它，而且网上的很多文章示例在我亲自测试的情况下大部分都编译不了，可能是姿势不对，也有些是写法有误，不过这反而让我更困惑，所以在swift3下我梳理了下这部分的内容，打算对guard关键字一探究竟">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="swift之guard关键字">
+  <meta name="twitter:description" content="前言看了很多关于guard关键字的文章，但是还是不能够很好的理解它，而且网上的很多文章示例在我亲自测试的情况下大部分都编译不了，可能是姿势不对，也有些是写法有误，不过这反而让我更困惑，所以在swift3下我梳理了下这部分的内容，打算对guard关键字一探究竟">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="swift之guard关键字">
+  <meta property="og:description" content="前言看了很多关于guard关键字的文章，但是还是不能够很好的理解它，而且网上的很多文章示例在我亲自测试的情况下大部分都编译不了，可能是姿势不对，也有些是写法有误，不过这反而让我更困惑，所以在swift3下我梳理了下这部分的内容，打算对guard关键字一探究竟">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://www.loulijun.com/2016/12/Swift%E4%B9%8Bguard%E5%85%B3%E9%94%AE%E5%AD%97/">
+  <link rel="alternate" type="application/rss+xml" title="花郎" href="http://www.loulijun.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 花郎 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="花郎 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 花郎" class="blog-button">花郎</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">心有猛虎，细嗅蔷薇</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">其实我是个程序员</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="我的博客" class="blog-button">博客</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/loulijun" title="@loulijun 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/loulijun" title="@loulijun 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/loulijun" title="@loulijun" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-12-20 15:10:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-12-20</time> &#8226; <span class="post-meta__tags tags">swiftguard</span>
+    </div>
+    <h1 class="post-title">swift之guard关键字</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="section">前言</h3>
+<p>看了很多关于guard关键字的文章，但是还是不能够很好的理解它，而且网上的很多文章示例在我亲自测试的情况下大部分都编译不了，可能是姿势不对，也有些是写法有误，不过这反而让我更困惑，所以在swift3下我梳理了下这部分的内容，打算对guard关键字一探究竟</p>
+
+<h3 id="guard">guard关键字是什么</h3>
+
+<p>guard关键字在官方文档中的在Early Exit章节，具体解释如下：</p>
+
+<blockquote>
+  <p>“A guard statement, like an if statement, executes statements depending on the Boolean value of an expression. You use a guard statement to require that a condition must be true in order for the code after the guard statement to be executed. Unlike an if statement, a guard statement always has an else clause—the code inside the else clause is executed if the condition is not true.”</p>
+</blockquote>
+
+<p>摘录来自: Apple Inc. “The Swift Programming Language (Swift 3.0.1)”。 iBooks.</p>
+
+<p>翻译为中文就是：</p>
+
+<blockquote>
+  <p>guard语句类似于if语句，是否执行语句也是基于Boolean表达式，使用guard关键字需要条件为true才会让guard后面的语句执行。与if语句不通，guard语句一直需要有一个else语句块，else语句块是条件不满足时需要执行的代码</p>
+</blockquote>
+
+<h3 id="guardif">guard与if的区别</h3>
+
+<p>其实guard可以理解为对if的一种优化，可以让代码写的更优雅，如官方稳定的标题<strong>Early Exit</strong>，而这也是guard关键字最关键的作用，让检查在最开始的时候完成，而不是通过一大坨判断然后将需要执行的语句放到if语句块内</p>
+
+<p>另外使用guard有很多好处：</p>
+
+<ul>
+  <li>而guard关键字为什么一定要有个else呢？其实就是想让你检查你期望的条件，而不是通过一堆判空检查你不希望的条件，这样更加接近自然语言，更易理解</li>
+  <li>如果检查通过，会自动将optional变量解包，以便后面的语句使用</li>
+  <li>可以尽早<strong>Early Exit</strong>将bad cases过滤掉，而不希望变成通过一堆层层的if判断这种金字塔式的写法，这样代码看起来也更加优雅</li>
+</ul>
+
+<p>啰嗦了这么多，让我们用一个🌰来解释下guard与if的不同吧</p>
+
+<pre><code>import Foundation
+
+var hi: String? = "hello world"
+
+func testGuard(say: String?) {
+    guard let sayHi = say else {
+        print("sayHi is nil")
+        return
+    }
+    
+    print(sayHi)
+}
+
+func testIf(say: String?) {
+    if let sayHi = say {
+        print(sayHi)
+    }
+}
+
+testGuard(say: hi)
+testIf(say: hi)
+
+</code></pre>
+
+<p><strong>注</strong>：如果guard的代码块中不写break或return，代码会无法编译，报错：’guard’ body may not fail through, consider using ‘return’ or ‘break’ to exit the scope</p>
+
+<p>当然也有人持不同观点，认为guard重构后的代码反而更加难懂了。我个人的观点是看使用场景吧，很多场景（如复杂的逻辑条件判断）不一定适合使用guard，当然对于大多简单的条件判断我是会使用guard的</p>
+
+<p><strong>参考资料及优秀文章</strong></p>
+
+<ul>
+  <li><a href="http://ericcerney.com/swift-guard-statement/">Swift guard statement</a></li>
+  <li><a href="http://swift.gg/2016/01/14/another-take-on-guard/">关于guard的另一种观点</a></li>
+  <li><a href="http://swift.gg/2016/02/14/swift-guard-radix/">使用guard的正确姿势</a></li>
+</ul>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/11/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B9%8B%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/" title="link to 微信小程序-参数传递与事件处理">微信小程序-参数传递与事件处理</a></h2>
+       <p class="excerpt">前言开发过程中经常会遇到从一个页面携带数据到另一个页面的情况，所以需要知道以下信息，什么是事件？有哪些传递方式？如果传递数组呢？如果传递对象呢？一、事件  什么是事件      事件是视图层到逻辑层的通讯方式    事件可以将用户的行为反馈到逻辑层进行处理    事件可以绑定在组件上，当达到触发事件，就会执行逻辑层对应的事件处理函数    事件对象可以携带额外信息，如id, dataset, touches  事件处理的使用通过在wxml中设置bindtap、catchtap等，在js中写...&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-11-25 15:10:24 +0800" class="post-list__meta--date date">2016-11-25</time> &#8226; <span class="post-list__meta--tags tags">微信小程序</span><a class="btn-border-small" href=/2016/11/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B9%8B%E6%95%B0%E6%8D%AE%E4%BC%A0%E9%80%92/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="/2016/12/Swift之guard关键字" data-title="swift之guard关键字" data-url="http://www.loulijun.com/2016/12/Swift%E4%B9%8Bguard%E5%85%B3%E9%94%AE%E5%AD%97/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"loulijun"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 许可协议</a></span>
+        <span class="footer__copyright">本站由 <a href="http://www.loulijun.com">@loulijun</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 主题
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>
