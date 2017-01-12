@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>Android自定义View知多少</title>
+  <meta name="description" content="前言">
+  <meta name="author" content="Wei Wang">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Android自定义View知多少">
+  <meta name="twitter:description" content="前言">
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Android自定义View知多少">
+  <meta property="og:description" content="前言">
+  
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link href="/assets/images/favicon.png" rel="shortcut icon" type="image/png">
+  
+  <link rel="stylesheet" href="/css/main.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="canonical" href="http://www.loulijun.com/2016/12/Android%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%9F%A5%E5%A4%9A%E5%B0%91/">
+  <link rel="alternate" type="application/rss+xml" title="花郎" href="http://www.loulijun.com/feed.xml">
+  
+  <meta name="google-site-verification" content="1-1ZlHoRvM0T2FqPbW2S-qLgYXN6rsn52kErlMPd_gw" />
+  
+</head>
+
+
+  <body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    <header class="panel-cover panel-cover--collapsed" style="background-image: url('/assets/images/background-cover.jpg')">
+  <div class="panel-main">
+
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/#blog" title="前往 花郎 的主页" class="blog-button"><img src="/assets/images/avatar.jpg" width="80" alt="花郎 logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/#blog" title="link to homepage for 花郎" class="blog-button">花郎</a></h1>
+        
+        <span class="panel-cover__subtitle panel-subtitle">心有猛虎，细嗅蔷薇</span>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description">其实我是个程序员</p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+        
+        
+        
+        <div class="navigation-wrapper">
+          <div>
+            <nav class="cover-navigation cover-navigation--primary">
+              <ul class="navigation">
+                <li class="navigation__item"><a href="/#blog" title="我的博客" class="blog-button">博客</a></li>
+                
+              </ul>
+            </nav>
+          </div>
+          
+          <div><nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  
+  <!-- Weibo -->
+  <li class="navigation__item">
+    <a href="http://weibo.com/loulijun" title="@loulijun 的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li>
+  
+
+  
+  <!-- Github -->
+  <li class="navigation__item">
+    <a href="https://github.com/loulijun" title="@loulijun 的 Github" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+  
+  
+  
+  <!-- Twitter -->
+  <li class="navigation__item">
+    <a href="http://twitter.com/loulijun" title="@loulijun" target="_blank">
+      <i class='social fa fa-twitter'></i>
+      <span class="label">Twitter</span>
+    </a>
+  </li>
+  
+
+  
+
+  <!-- RSS -->
+  <li class="navigation__item">
+    <a href="/feed.xml" rel="author" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+  
+
+  </ul>
+</nav>
+</div>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="panel-cover--overlay cover-slate"></div>
+    
+  </div>
+</header>
+
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2016-12-28 15:10:24 +0800" itemprop="datePublished" class="post-meta__date date">2016-12-28</time> &#8226; <span class="post-meta__tags tags">Android</span>
+    </div>
+    <h1 class="post-title">Android自定义View知多少</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="section">前言</h3>
+
+<h3 id="view">自定义View绘制流程</h3>
+
+<h3 id="view-1">自定义View的构造函数</h3>
+
+<h3 id="section-1">参考资料</h3>
+
+<p>细节点</p>
+
+<ul>
+  <li>MeasureSpec三种测量模式</li>
+  <li>Rect与RectF的区别</li>
+</ul>
+
+  </section>
+</article>
+
+<section class="read-more">
+   
+   
+   
+   
+   <div class="read-more-item">
+       <span class="read-more-item-dim">更早的文章</span>
+       <h2 class="post-list__post-title post-title"><a href="/2016/12/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7Charles%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0/" title="link to 网络抓包工具Charles使用小记">网络抓包工具Charles使用小记</a></h2>
+       <p class="excerpt">前言&hellip;</p>
+       <div class="post-list__meta"><time datetime="2016-12-21 15:10:24 +0800" class="post-list__meta--date date">2016-12-21</time> &#8226; <span class="post-list__meta--tags tags">Charles</span><a class="btn-border-small" href=/2016/12/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7Charles%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0/>继续阅读</a></div>
+   </div>
+   
+</section>
+
+<!-- 多说评论框 start -->
+<div class="ds-thread" data-thread-key="/2016/12/Android自定义View知多少" data-title="Android自定义View知多少" data-url="http://www.loulijun.com/2016/12/Android%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%9F%A5%E5%A4%9A%E5%B0%91/"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"loulijun"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+
+            <section class="footer">
+    <footer>
+    	<span class="footer__copyright">本站采用<a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 许可协议</a></span>
+        <span class="footer__copyright">本站由 <a href="http://www.loulijun.com">@loulijun</a> 创建，采用 <a href="https://github.com/onevcat/vno-jekyll">Vno - Jekyll</a> 主题
+    </footer>
+</section>
+
+        </div>
+    </div>
+    
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script type="text/javascript" src="/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+
+
+    
+  </body>
+
+</html>

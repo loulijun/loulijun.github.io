@@ -5,9 +5,48 @@
     <description>其实我是个程序员</description>
     <link>http://www.loulijun.com/</link>
     <atom:link href="http://www.loulijun.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 20 Dec 2016 17:22:09 +0800</pubDate>
-    <lastBuildDate>Tue, 20 Dec 2016 17:22:09 +0800</lastBuildDate>
+    <pubDate>Thu, 12 Jan 2017 23:01:31 +0800</pubDate>
+    <lastBuildDate>Thu, 12 Jan 2017 23:01:31 +0800</lastBuildDate>
     <generator>Jekyll v3.2.1</generator>
+    
+      <item>
+        <title>Android自定义View知多少</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;前言&lt;/h3&gt;
+
+&lt;h3 id=&quot;view&quot;&gt;自定义View绘制流程&lt;/h3&gt;
+
+&lt;h3 id=&quot;view-1&quot;&gt;自定义View的构造函数&lt;/h3&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;参考资料&lt;/h3&gt;
+
+&lt;p&gt;细节点&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MeasureSpec三种测量模式&lt;/li&gt;
+  &lt;li&gt;Rect与RectF的区别&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 28 Dec 2016 15:10:24 +0800</pubDate>
+        <link>http://www.loulijun.com/2016/12/Android%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%9F%A5%E5%A4%9A%E5%B0%91/</link>
+        <guid isPermaLink="true">http://www.loulijun.com/2016/12/Android%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%9F%A5%E5%A4%9A%E5%B0%91/</guid>
+        
+        <category>Android</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>网络抓包工具Charles使用小记</title>
+        <description>&lt;h3 id=&quot;section&quot;&gt;前言&lt;/h3&gt;
+</description>
+        <pubDate>Wed, 21 Dec 2016 15:10:24 +0800</pubDate>
+        <link>http://www.loulijun.com/2016/12/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7Charles%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0/</link>
+        <guid isPermaLink="true">http://www.loulijun.com/2016/12/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85%E5%B7%A5%E5%85%B7Charles%E4%BD%BF%E7%94%A8%E5%B0%8F%E8%AE%B0/</guid>
+        
+        <category>Charles</category>
+        
+        
+      </item>
     
       <item>
         <title>swift之guard关键字</title>
